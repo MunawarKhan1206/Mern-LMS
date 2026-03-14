@@ -17,25 +17,25 @@ app.use(
       // Allow requests with no origin (like mobile apps or curl)
       if (!origin) return callback(null, true);
       
-      // Explicitly allow the live frontend URL and any vercel subdomains
       const allowedOrigins = [
-        "https://mern-lms-v2.vercel.app",
         "http://localhost:5173",
         "http://localhost:5000"
       ];
       
-      const isAllowed = allowedOrigins.includes(origin) || origin.endsWith(".vercel.app");
+      const isAllowed = 
+        allowedOrigins.includes(origin) || 
+        origin.endsWith(".vercel.app") || 
+        origin.includes("mern-lms"); // catch-all for custom domains if they match project name
       
       if (isAllowed) {
         callback(null, true);
       } else {
-        // Log blocked origin for debugging, but don't crash the request
         console.warn("Blocked by CORS:", origin);
         callback(null, false);
       }
     },
     credentials: true,
-    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+    optionsSuccessStatus: 200
   })
 );
 app.use(express.json());
