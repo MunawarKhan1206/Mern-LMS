@@ -42,5 +42,5 @@ Follow these steps exactly to deploy your application.
 
 ## Common Fixes
 - **White Screen on Vercel**: Ensure the `Root Directory` in Vercel settings is set to `frontend`.
-- **CORS Error**: Ensure the `VITE_API_URL` DOES NOT have a trailing slash (e.g., use `https://xyz.onrender.com` not `https://xyz.onrender.com/`).
+- **CORS Error**: Ensure the `VITE_API_URL` is the correct URL from Render.
 - **Database Connection**: Ensure your MongoDB Atlas IP Whitelist allows `0.0.0.0/0` (Allow access from anywhere).
